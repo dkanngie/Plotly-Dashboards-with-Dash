@@ -1,6 +1,6 @@
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 from dash.dependencies import Input, Output
 import plotly.graph_objs as go
 import pandas as pd
@@ -37,14 +37,20 @@ def update_figure(selected_year):
             name=continent_name
         ))
 
-    return {
-        'data': traces,
-        'layout': go.Layout(
+    data = traces
+    layout = go.Layout(
             xaxis={'type': 'log', 'title': 'GDP Per Capita'},
             yaxis={'title': 'Life Expectancy'},
-            hovermode='closest'
-        )
-    }
+            hovermode='closest')
+
+    fig = go.Figure(data=data, layout=layout)
+
+    return fig
+
+#    return {
+#        'data': data,
+#        'layout': layout
+#    }
 
 if __name__ == '__main__':
     app.run_server()
