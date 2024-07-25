@@ -20,26 +20,26 @@ app = dash.Dash()
 # Create a DataFrame from the .csv file:
 df = pd.read_csv('../data/OldFaithful.csv')
 
+data = [go.Scatter(
+    x = df['X'],
+    y = df['Y'],
+    mode = 'markers'
+    )]
+
+layout = go.Layout(
+    title = 'Old Faithful Eruption Intervals v Durations',
+    xaxis = {'title': 'Duration of eruption (minutes)'},
+    yaxis = {'title': 'Interval to next eruption (minutes)'},
+    hovermode='closest'
+    )
+
+fig = go.Figure(data=data, layout=layout)
+
 # Create a Dash layout that contains a Graph component:
 app.layout = html.Div([
     dcc.Graph(
         id='old_faithful',
-        figure={
-            'data': [
-                go.Scatter(
-                    x = df['X'],
-                    y = df['Y'],
-                    mode = 'markers'
-                )
-            ],
-            'layout': go.Layout(
-                title = 'Old Faithful Eruption Intervals v Durations',
-                xaxis = {'title': 'Duration of eruption (minutes)'},
-                yaxis = {'title': 'Interval to next eruption (minutes)'},
-                hovermode='closest'
-            )
-        }
-    )
+        figure=fig)
 ])
 
 # Add the server clause:

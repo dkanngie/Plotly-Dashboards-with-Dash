@@ -15,7 +15,7 @@ print(arr)
 a = np.arange(0,10)
 print(a)
 
-a= np.arange(0,10,2)
+a = np.arange(0,10,2)
 print(a)
 
 # Create an array of zeros
@@ -42,7 +42,6 @@ print(a)
 a = np.linspace(0,10,6)
 print(a)
 
-
 a = np.linspace(0,10,101)
 print(a)
 
@@ -60,7 +59,6 @@ print(arr)
 # who also ran these 2 calls immediately after setting the same seed.
 arr2 = np.random.randint(0,100,10)
 print(arr2)
-
 
 # Simple operations
 
@@ -98,7 +96,6 @@ print(mat[:,col])
 # Select an entire column (all row entries of this column "col")
 print(mat[row,:])
 
-
 #######################
 ##### Masking #########
 #######################
@@ -107,9 +104,7 @@ print(mat[row,:])
 
 print(mat > 50)
 
-
 print(mat[mat>50])
-
 
 # That is all for NumPy! NumPy is a really large library that does a lot
 # more than what we showed here. But for our use cases in visualization, these

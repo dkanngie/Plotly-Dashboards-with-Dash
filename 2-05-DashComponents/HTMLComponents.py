@@ -19,6 +19,14 @@ app.layout = html.Div([
         style={'color':'green', 'border':'2px green solid',
         'margin':10, 'width':220}
     ),
+    html.Div(
+        ['This is another inner Div',
+         html.Div('hello guapita',
+            style={'color':'red', 'border':'2px green solid',
+            'margin':10, 'width':220})],
+        style={'color':'green', 'border':'2px green solid',
+        'margin':10, 'width':220}
+    ),
 ],
 # this styles the outermost Div:
 style={'width':500, 'height':200, 'color':'red', 'border':'2px red dotted'})

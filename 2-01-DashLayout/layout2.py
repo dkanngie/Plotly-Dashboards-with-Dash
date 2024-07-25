@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
-import dash
+#import dash
+from jupyter_dash import JupyterDash # if you want to run it via jupyter
+
 import dash_core_components as dcc
 import dash_html_components as html
 
-app = dash.Dash()
+#app = dash.Dash()
+app = JupyterDash(__name__)
 
 colors = {
     'background': '#111111',
@@ -47,5 +50,8 @@ app.layout = html.Div(children=[
     style={'backgroundColor': colors['background']}
 )
 
-if __name__ == '__main__':
-    app.run_server()
+#if __name__ == '__main__':
+#    app.run_server()
+    
+app.run_server(mode='inline')
+

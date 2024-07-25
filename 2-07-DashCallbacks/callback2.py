@@ -9,7 +9,6 @@ df = pd.read_csv('../data/gapminderDataFiveYear.csv')
 
 app = dash.Dash()
 
-
 # https://dash.plot.ly/dash-core-components/dropdown
 # We need to construct a dictionary of dropdown values for the years
 year_options = []
