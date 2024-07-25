@@ -32,7 +32,8 @@ app.layout = html.Div([
                 options=[{'label': i.title(), 'value': i} for i in features],
                 value='acceleration'
             )
-        ],style={'width': '48%', 'float': 'right', 'display': 'inline-block'}),
+        ],
+        style={'width': '48%', 'float': 'right', 'display': 'inline-block'}),
 
     dcc.Graph(id='feature-graphic')
 ], style={'padding':10})

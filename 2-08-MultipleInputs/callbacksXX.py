@@ -48,7 +48,8 @@ app.layout = html.Div([
                 value='Linear',
                 labelStyle={'display': 'inline-block'}
             )
-        ],style={'width': '48%', 'float': 'right', 'display': 'inline-block'})
+        ],
+        style={'width': '48%', 'float': 'right', 'display': 'inline-block'})
     ]),
 
     dcc.Graph(id='indicator-graphic'),
@@ -74,31 +75,36 @@ def update_graph(xaxis_column_name, yaxis_column_name,
                  xaxis_type, yaxis_type,
                  year_value):
     dff = df[df['Year'] == year_value]
-    return {
-        'data': [go.Scatter(
-            x=dff[dff['Indicator Name'] == xaxis_column_name]['Value'],
-            y=dff[dff['Indicator Name'] == yaxis_column_name]['Value'],
-            text=dff[dff['Indicator Name'] == yaxis_column_name]['Country Name'],
-            mode='markers',
-            marker={
-                'size': 15,
-                'opacity': 0.5,
-                'line': {'width': 0.5, 'color': 'white'}
+    
+    data = [go.Scatter(
+        x=dff[dff['Indicator Name'] == xaxis_column_name]['Value'],
+        y=dff[dff['Indicator Name'] == yaxis_column_name]['Value'],
+        text=dff[dff['Indicator Name'] == yaxis_column_name]['Country Name'],
+        mode='markers',
+        marker={
+            'size': 15,
+            'opacity': 0.5,
+            'line': {'width': 0.5, 'color': 'white'}
             }
-        )],
-        'layout': go.Layout(
-            xaxis={
-                'title': xaxis_column_name,
-                'type': 'linear' if xaxis_type == 'Linear' else 'log'
-            },
-            yaxis={
-                'title': yaxis_column_name,
-                'type': 'linear' if yaxis_type == 'Linear' else 'log'
-            },
-            margin={'l': 40, 'b': 40, 't': 10, 'r': 0},
-            hovermode='closest'
-        )
-    }
+    )]
+    
+    layout = go.Layout(
+        xaxis={
+            'title': xaxis_column_name,
+            'type': 'linear' if xaxis_type == 'Linear' else 'log'
+        },
+        yaxis={
+            'title': yaxis_column_name,
+            'type': 'linear' if yaxis_type == 'Linear' else 'log'
+        },
+        margin={'l': 40, 'b': 40, 't': 10, 'r': 0},
+        hovermode='closest'
+    )
+    
+    fig = go.Figure(data=data, layout=layout)
+    
+    return fig
+
 
 if __name__ == '__main__':
     app.run_server()
