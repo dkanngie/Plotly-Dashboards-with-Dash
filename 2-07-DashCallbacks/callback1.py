@@ -12,8 +12,8 @@ app.layout = html.Div([
 
 @app.callback(
     Output(component_id='my-div', component_property='children'),
-    [Input(component_id='my-id', component_property='value')]
-)
+    [Input(component_id='my-id', component_property='value')] 
+) # input value goes into value
 def update_output_div(input_value): # this is the callback function
     return 'You\'ve entered "{}"'.format(input_value)
 

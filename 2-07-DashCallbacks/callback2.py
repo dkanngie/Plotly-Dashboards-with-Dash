@@ -21,7 +21,7 @@ app.layout = html.Div([
 ])
 
 @app.callback(Output('graph', 'figure'),
-              [Input('year-picker', 'value')])
+              [Input('year-picker', 'value')]) # selected_year goes into value?
 def update_figure(selected_year):
     filtered_df = df[df['year'] == selected_year]
     traces = []
